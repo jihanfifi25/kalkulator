@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calkulatror</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(15, 15, 15);
+        }
+        .container{
+            width: 300px;
+            margin: auto;
+            padding: 50px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgb(207, 209, 211);
+        }
+        input, button{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button{
+            background-color: blue;
+            color: aliceblue;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+
+        }
+        button:hover{
+            background: blue;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>calculator</h2>
+
+        <input id="angka1" type="number" placeholder="masukan angka pertama">
+        <input  id="angka2" type="number" placeholder="masukan angka kedua">
+
+        <button onclick="hitung('/')">Bagi :</button>
+        <button onclick="hitung('+')"> tambah +</button>
+        <button onclick="hitung('-')"> kurang -</button>
+
+        <h3>hasil: <span id="hasil">0</span></h3>
+
+    </div>
+    <script>
+        function hitung(operator) {
+            let a = parseFloat(document.getElementById("angka1").value);
+            let b = parseFloat(document.getElementById("angka2").value);
+
+            if (isNaN(a) || isNaN(b)) {
+                alert("Masukkan angka yang valid!");
+                return;
+            }
+            let hasil;
+            if (operator === '/'){
+                hasil = a / b;
+            } else
+            if (operator === '+') {
+                hasil = a + b;
+            }else 
+            if (operator === '-'){
+                hasil = a - b;
+            }else {
+                hasil = "operator tidak valid";
+            }
+
+            
+            document.getElementById("hasil").textContent = hasil;
+        }
+    </script>
+
+    
+</body>
+</html>
