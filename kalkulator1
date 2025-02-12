@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            margin: auto;
+            width: 250px;
+            border-radius: 10px;
+        }
+        input {
+            display: block;
+            margin: 5px auto;
+            padding: 8px;
+            font-size: 14px;
+            width: 90%;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        button {
+            width: 35px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Kalkulator Sederhana</h1>
+        
+        <input type="number" id="num1" placeholder="Masukkan angka pertama">
+        <input type="number" id="num2" placeholder="Masukkan angka kedua">
+        
+        <div class="buttons">
+            <button onclick="calculate('add')">+</button>
+            <button onclick="calculate('subtract')">-</button>
+            <button onclick="calculate('multiply')">*</button>
+            <button onclick="calculate('divide')">/</button>
+        </div>
+        
+        <h2>Hasil: <span id="result">0</span></h2>
+    </div>
+
+    <script>
+        // JavaScript untuk kalkulator
+        function calculate(operation) {
+            // Mendapatkan nilai input
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Harap masukkan angka yang valid!");
+                return;
+            }
+
+            // Memilih operasi berdasarkan tombol yang ditekan
+            if (operation === 'add') {
+                result = num1 + num2;
+            } else if (operation === 'subtract') {
+                result = num1 - num2;
+            } else if (operation === 'multiply') {
+                result = num1 * num2;
+            } else if (operation === 'divide') {
+                if (num2 === 0) {
+                    alert("Error! Pembagian dengan nol tidak diperbolehkan.");
+                    return;
+                }
+                result = num1 / num2;
+            }
+
+            // Menampilkan hasil ke layar
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+
+</body>
+</html>
